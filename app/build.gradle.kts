@@ -15,6 +15,10 @@ android {
         versionName = "1.0.0"
     }
 
+    buildFeatures {
+        aidl = true
+    }
+
     buildTypes {
         debug {
             applicationIdSuffix = ".debug"
