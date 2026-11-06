@@ -26,6 +26,14 @@ if old_stop not in s:
 s = s.replace(old_stop, new_stop, 1)
 service.write_text(s, encoding="utf-8")
 
+gradle_file = root / "app/build.gradle.kts"
+g = gradle_file.read_text(encoding="utf-8")
+old_app_id = 'applicationId = "com.micplugin"'
+if old_app_id not in g:
+    raise SystemExit("PATCH_ERROR: applicationId anchor not found")
+g = g.replace(old_app_id, 'applicationId = "com.micplugin.wevo"', 1)
+gradle_file.write_text(g, encoding="utf-8")
+
 m = manifest.read_text(encoding="utf-8")
 if 'android.permission.INTERNET' not in m:
     marker = '<manifest xmlns:android="http://schemas.android.com/apk/res/android"'
