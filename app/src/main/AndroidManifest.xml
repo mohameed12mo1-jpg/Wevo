@@ -1,0 +1,16 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application
+        android:allowBackup="false"
+        android:label="Wevo Live Bridge"
+        android:supportsRtl="true">
+        <service
+            android:name=".WevoBridgeService"
+            android:exported="true"
+            android:stopWithTask="false">
+            <intent-filter>
+                <action android:name="com.micplugin.AUDIO_PLUGIN" />
+            </intent-filter>
+        </service>
+    </application>
+</manifest>
